@@ -23,7 +23,7 @@ class Solution:
     
         ls=[]
         for i in s.split(' '):
-            if i in ONES:
+            if i in sozler:
                 ls.append(sozler[i])
             elif i=="yüz":
                 ls[-1]*=100
