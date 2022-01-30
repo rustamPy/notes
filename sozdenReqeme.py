@@ -1,6 +1,6 @@
 class Solution:
     def sozdenReqeme(self,s):
-        ONES = {'sıfır': 0,
+        sozler = {'sıfır': 0,
                 'bir': 1,
                 'iki': 2,
                 'üç': 3,
@@ -24,7 +24,7 @@ class Solution:
         ls=[]
         for i in s.split(' '):
             if i in ONES:
-                ls.append(ONES[i])
+                ls.append(sozler[i])
             elif i=="yüz":
                 ls[-1]*=100
             elif i=="min":
