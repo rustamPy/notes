@@ -1,4 +1,4 @@
-# notes
-Some python notes
+# SALAM
 
-repo-da özüm tərəfimdən yazdığım script-ləri tapa bilərsiniz.
+
+Bu repo-da özüm tərəfimdən yazdığım script-ləri tapa bilərsiniz.
