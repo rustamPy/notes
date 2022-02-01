@@ -18,7 +18,7 @@ class Solution:
                 'altmış': 60,
                 'yetmiş': 70,
                 'səksən': 80,
-                'doğsan': 90,
+                'doxsan': 90,
                   }
     
         ls=[]
