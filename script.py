@@ -13,6 +13,11 @@ class Solution(object):
             ws2=wb2.worksheets[0]
             ls=[]
             cls=[]
+            """
+            --------------------------------------------------------------------------------------
+            | Creating a dictionary for port/protocol thing and write up the head of a new sheet.|
+            --------------------------------------------------------------------------------------
+            """
             d=collections.defaultdict(list)
             thin_border=Border(left=Side(style='thin'), right=Side(style='thin'), top=Side(style='thin'), bottom=Side(style='thin'))
 
@@ -26,6 +31,12 @@ class Solution(object):
                 ws2.cell(row=1, column=7).value="Comments"
                 ws2.cell(row=1, column=8).value="Call"
                 ws2.cell(row=1, column=9).value="Proposed FW rule ID \[EY\]"
+                
+            """
+            -------------------------------------------------------------------------------
+            | All the data collected from the source table are saving in lists (seperate) |
+            -------------------------------------------------------------------------------
+            """
 
             sip,sname,dip,dname,port,pr=list(),list(),list(),list(),list(),list()
             for row in ws1.iter_rows(min_row=2):
