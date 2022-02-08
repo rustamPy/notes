@@ -101,35 +101,20 @@ class Solution(object):
                     break
             ws2.alignment=Alignment(wrap_text=True)
             wb2.save(file2)
-            print("""XkxxddddddddxxkOKXWMMMMMMMMMMMMMMMMMMMWN0kxdolooodxOXWMMMMMM
-            x,'''''''''''''',:lx0NMMMMMMMMMMMMMMNOo:,''''''''''';lxXWMMM
-            x,'''',:cccc:,'''''',lONMMMMMMMMMMWOl,''''';cllc;,''''':xXMM
-            x,''''cKWWWNXKOd:''''';xNMMMMMMMMNx;'''',lOXNWWWXOl,'''',lKM
-            x,''''lXMMMMMMMWKo,'''',xWMMMMMMWx,'''',dNMMMMMMMMNx;'''''oX
-            x,''''lXMMMMMMMMMKl'''''cKMMMMMMKc'''''oNMMMMMMMMMMNo''''';O
-            x,''''lXMMMMMMMMMWd,'''':0MMMMMWk;'''',kWMMMMMMMMMMMk;'''',x
-            x,''''lXMMMMMMMMMWd''''':0MMMMMWk,'''';OMMMMMMMMMMMMO;'''',x
-            x,''''lXMMMMMMMMMXl'''''lXMMMMMMO;'''',xWMMMMMMMMMMWx,'''';k
-            x,''''lXMMMMMMMWXo,'''';kWMMMMMWXl''''':OWMMMMMMMMWO:'''''lX
-            x,''''lXMMMMWNKxc''''';xNWWWNNNNNOc''''';xXWMMMMWXk:'''''c0W
-            x,'''';oxxddlc;''''',lONWWWWWWWWWWKo,''''':odxxdo:,'''',oKWM
-            x,''''''''''''''',cd0KkdkOkO0kd0WMMNOo;'''''''''''''';lONMMM
-            Olc::::::::clodxOKNMM0,.cxd;'cd0WMMMMWKkdlc:;;;;:cldOKWMMMMM
-            MWNNNNNNNNNWWWMMMMMMM0;':d0o,OWMMMMMMMMMMWNNXXXXNNWMMMMMMMMM
-            MMMWKkxxxxx0WMMMMMMMM0l:::oO0NMMMMMMMXkxxxxxxxxxxxxxxx0NMMMM
-            MMMNd'''''';xNMMMMMMWx,''',xWMMMMMMMMk;'''''''''''''''cKMMMM
-            MMMNo''''''',oXMMMMMWx,.'',xWMMMMMMMMk;''''',,,;,,,,,;oXMMMM
-            MMMNo'''''''''c0WMMMWx'''',xWMMMMMMMMk;'''':kKKKKKKKKKXWMMMM
-            MMMNo'''''''''':kWMMWx,''',xWMMMMMMMMk;'''':0MMMMMMMMMMMMMMM
-            MMMNo'''';l:'''';xNMWx,''',xWMMMMMMMMk;'''';dOOOOOOOO0NMMMMM
-            MMMNo'''';k0c'''',oXWx,''',xWMMMMMMMMk;''.''''''''''';kWMMMM
-            MMMNo'''';OWKl'''''l0x,''',xWMMMMMMMMk;'''''''''''''';kWMMMM
-            MMMNo'''';OMMXd,''''cl,''',xWMMMMMMMMk;'''';d0OOOOOOO0NMMMMM
-            MMMNo'''';OMMMNx;''''''''',xWMMMMMMMMk;'''':0MMMMMMMMMMMMMMM
-            MMMNo'''';kMMMMWO:'''''''',xWMMMMMMMMk;'''':0MMMMMMMMMMMMMMM
-            MMMNo'''';kMMMMMWKl''''''',xWMMMMMMMMk;'''',coooooooood0WMMM
-            MMMNo'''';OMMMMMMMXd,''''',xWMMMMMMMMk;''''''''''''''''dWMMM
-            MMMWkc:c:l0MMMMMMMMNkc::::lOWMMMMMMMM0l:::::::::::::::cOWMMM
-            MMMMWNXXXNWMMMMMMMMMWNXXXXNWMMMMMMMMMWNXXXXXXXXXXXXXXXNWMMMM""")
+            print("""MMMMMMWNKOxddollllllloodx0WMMMMMMMMMMMWX0xolc::::clox0NWMMMMMMMMMMMMMKdllloOWMMMMMMMNOollllokNMMMMMMM0olloollollllllllkN
+                    MMMWXko:,''''''''''''''''dNMMMMMMMMMW0d:,'''''''''''',:dKWMMMMMMMMMMWk,''''dNMMMMMMNd,''''''cKMMMMMMWx,'''''''''''''''cK
+                    MMNk:'''''',;cloooc;'''''dNMMMMMMMMXd;''''',coddol;''''';dXMMMMMMMMMWk,''''dNMMMMWKo,'''''''cKMMMMMMWOlcccccccc:;'''''cK
+                    MXo,'''''cx0XWWMMWXl'''''dNMMMMMMMKl''''',o0NWMMMWKx;'''''lKWWMMMMMMWk,''''dNMMMW0c'.'''''''cKMMMMMMMWWNNNNNNNNNd,''''cK
+                    Nd,'''',dXMMMMMMMMXl'''''dNMMMMMMXo''''';xNMMMMMMMMWO:'''''lOXMMMMMMWk,''''dNMMNk:''''''''''cKMMMMMMMMMMMMMMMMMWx,''''cK
+                    0:'''''lXMMMMMMMMMXl'''''dNMMMMMMO;'''''oXMMMMMMMMMMWk,'''',:kWMMMMMWk,''''dNMXd,'''':o:''''cKMMMMMMMW0kkkkkkkkxc'''''cK
+                    O;'''',xWMMMMMMMMMXl'''''dNMMMMMWx,'''',kWMMMMMMMMMMM0:''''',oNMMMMMWk,''''dNKo,'''':O0c''''cKMMMMMMMXl'''''''''''''''cK
+                    O;'''',xWMMMMMMMMMXl'''''dNMMMMMWx,'''',kWMMMMMMMMMMMKc''''''oNMMMMMWk,''',d0l'''''c0W0:''''cKMMMMMMMXo,,,,,,,,,''''''cK
+                    Kc'''''lXMMMMMMMMMXl'''''dNMMMMMMO;'''''dNMMMMMMMMMMMO;''''',xWMMMMMWk,''',cc'''',oKMM0:''''cKMMMMMMMWX000000000o'''''cK
+                    Wx,'''',dXMMMMMMMMXl'''''dNMMMMMMXl'''.';OWMMMMMMMMMKl''''':o0MMMMMMWk,''''''''',dNMMM0:''''cKMMMMMMMMMMMMMMMMMWx,''''cK
+                    MNd,'''',ckXWMMMMMXl'''''dNMMMMMMM0c''''':xXWMMMMMNOc''''';kNWMMMMMMWk,'''''''':kNMMMM0:''''cKMMMMMMMMMMMMMMMMMWx,''''cK
+                    MMNkc'''''';codxxxd;'''''dNMMMMMMMWKl,'''',:dkkOkdc,''''':OWMMMMMMMMWk,'''''''c0WMMMMM0:''''cKMMMMMMXkoddddddddo:'''''cK
+                    MMMWXkl;,''''''''''''''''dNMMMMMMMMMNkl,''''''''''''''':dKWMMMMMMMMMWk,''''',lKWMMMMMM0:''''cKMMMMMM0:''''''''''''''''cK
+                    MMMMMMWX0xdlc:;;;;,,;;;;:kWMMMMMMMMMMMN0xoc;;,,,,,;:ldOXWMMMMMMMMMMMMOc:::::dXMMMMMMMMKo::::dXMMMMMMKo::::::::::::::::oX
+                    MMMMMMMMMMMWNXK000OO000KXNMMMMMMMMMMMMMMMWNKOkkxkO0XNMMMMMMMMMMMMMMMMWXKKKKXWMMMMMMMMMWXKKKKNWMMMMMMWXKKKKKKKKKKKKKKKKXW""")
         except:
             print("Something went wrong. Check the name of the file and make sure that the excel the second excel file is closed")
