@@ -52,4 +52,6 @@ def find_word(include: str = None, exclude: str = None, begins_with: str = None,
     return disorder_ls
 
 
-a = find_word(include='el', disorder='__de_', exclude='hoarft', order='_l___', length=5)
+if __name__ == "__main__":
+    example1 = find_word(include='el', disorder='__de_', exclude='hoarft', order='_l_de', length=5)
+    print(example1)
