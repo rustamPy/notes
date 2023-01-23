@@ -1,13 +1,34 @@
-WORDS = [w.strip() for w in open('D:/words.txt')]
-WORDLE_WORDS = [w.strip() for w in open('D:/valid-wordle-words.txt')]
+import urllib3
 
 
 def find_word(include: str = None, exclude: str = None, begins_with: str = None, ends_with: str = None,
               length: int = None, order: str = None, disorder: str = None, min_size: int = None, max_size: int = None,
-              include_only: str = None):
+              include_only: str = None, wordle: bool = True) -> list:
+    """
+
+    :param include: the words will have al of these letters
+    :param exclude: the words will not have all of these letters
+    :param begins_with: the words will start with this letter or letters (order matters)
+    :param ends_with: the words will end with this letter or letters (order matters)
+    :param length: the words will be this length
+    :param order: the words will have this order of letters
+    :param disorder: the words will not have this order of letters
+    :param min_size: the words will have minimum this number of letters
+    :param max_size: the words will have maximum this number of letters
+    :param include_only: the words will only include this set of values
+    :param wordle: turn on wordle words
+    :return: list
+    """
+
+    wordle_url = 'https://gist.githubusercontent.com/dracos/dd0668f281e685bad51479e5acaadb93/raw/ca9018b32e963292473841fb55fd5a62176769b5/valid-wordle-words.txt'
+    all_words_url = 'https://raw.githubusercontent.com/dwyl/english-words/master/words.txt'
+    http = urllib3.PoolManager()
+    wordle_txt = http.request('GET', wordle_url).data.decode('utf-8').splitlines()
+    all_words_txt = http.request('GET', all_words_url).data.decode('utf-8').splitlines()
+
     order_dict = {i: val for i, val in enumerate(order) if val != '_'} if order else {}
     disorder_dict = {i: val for i, val in enumerate(disorder) if val != '_'} if disorder else {}
-    words_base = WORDLE_WORDS
+    words_base = wordle_txt if wordle else all_words_txt
 
     base = [w for w in words_base if len(w) == length] if length else words_base
     min_base = [w for w in base if len(w) >= int(min_size)] if min_size else base
@@ -29,3 +50,6 @@ def find_word(include: str = None, exclude: str = None, begins_with: str = None,
                    all([w[i] != disorder_dict[i] for i in disorder_dict])] if disorder else order_ls
 
     return disorder_ls
+
+
+a = find_word(include='el', disorder='__de_', exclude='hoarft', order='_l___', length=5)
