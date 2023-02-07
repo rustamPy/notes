@@ -5,7 +5,6 @@ def find_word(include: str = None, exclude: str = None, begins_with: str = None,
               length: int = None, order: str = None, disorder: str = None, min_size: int = None, max_size: int = None,
               include_only: str = None, wordle: bool = True) -> list:
     """
-
     :param include: the words will have al of these letters
     :param exclude: the words will not have all of these letters
     :param begins_with: the words will start with this letter or letters (order matters)
@@ -26,8 +25,6 @@ def find_word(include: str = None, exclude: str = None, begins_with: str = None,
     wordle_txt = http.request('GET', wordle_url).data.decode('utf-8').splitlines()
     all_words_txt = http.request('GET', all_words_url).data.decode('utf-8').splitlines()
 
-    order_dict = {i: val for i, val in enumerate(order) if val != '_'} if order else {}
-    disorder_dict = {i: val for i, val in enumerate(disorder) if val != '_'} if disorder else {}
     words_base = wordle_txt if wordle else all_words_txt
 
     base = [w for w in words_base if len(w) == length] if length else words_base
@@ -44,14 +41,19 @@ def find_word(include: str = None, exclude: str = None, begins_with: str = None,
     begins_with_ls = [w for w in include_only_ls if w.startswith(begins_with)] if begins_with else include_only_ls
     ends_with_ls = [w for w in begins_with_ls if w.lower().endswith(ends_with.lower())] if ends_with else begins_with_ls
 
-    order_ls = [w for w in ends_with_ls if
-                all([w[i] == order_dict[i] for i in order_dict])] if order_dict else ends_with_ls
-    disorder_ls = [w for w in order_ls if
-                   all([w[i] != disorder_dict[i] for i in disorder_dict])] if disorder else order_ls
+    order_ls = [w for w in ends_with_ls if all([w[i] == order[i] for i in range(len(order)) if order[i]!='_'])] if order else ends_with_ls
+    disorder_ls = [word for word in order_ls 
+                   if (not isinstance(disorder, list) and all([word[i] != disorder[i] for i in range(len(disorder))]))  or
+                   (isinstance(disorder, list) and all([all([word[i] != disord[i] for i in range(len(disord))]) 
+                                                        for disord in disorder]))] if disorder else order_ls
+
+
 
     return disorder_ls
 
 
 if __name__ == "__main__":
-    example1 = find_word(include='el', disorder='__de_', exclude='hoarft', order='_l_de', length=5)
+    example1 = find_word(exclude='stlmn', include='ead', disorder=['__ea_', '___ed'], order='_a___')
+    print(len(example1))
     print(example1)
+    
