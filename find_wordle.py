@@ -66,7 +66,7 @@ class Game:
             rand = random.choice(ls)
             if len(set(rand)) == len(list(rand)):
                 return rand
-        return f'Choice is yours : {ls}'
+        return random.choice(ls)
 
 if __name__ == "__main__":
     obj = Game()
