@@ -9,11 +9,12 @@ class Solution:
 
     def __init__(self, ecg_array: np.array, location: Path, custom_frequency=None):
         self.ecg_values = ecg_array[:, 1]
-        self.fs = ecg_array[-1][0] if custom_frequency is None else custom_frequency
+        
+        self.fs = len(self.ecg_values) / ecg_array[-1][0] if custom_frequency is None else custom_frequency
         self.location = location
 
     # task 1 - detect QRS Complexes
-    def build_graph_all_time(self, to_image=False):
+    def build_graph_all_time(self, custom_name: str, to_image=False):
         """
 
         """
@@ -26,11 +27,10 @@ class Solution:
         plt.title('ECG Signal with Selected QRS Complex')
         plt.legend()
         plt.grid(True)
-        plt.savefig(self.location / 'graph_all.png') if to_image else plt.show()
+        plt.savefig(self.location / f'graph_all_{custom_name}.png') if to_image else plt.show()
 
     # task 1 - detect QRS Complexes
-    def build_graph_in_specific_time_range(self, plot_duration: int, q_location: int, s_location: int,
-                                           to_image=False) -> Any:
+    def build_graph_in_specific_time_range(self, plot_duration: int, q_location: int, s_location: int, custom_name: str, to_image=False) -> Any:
         """
         Building a plot with time (x) and amplitude (y) in the specific time range.
         Explanations are commented.
@@ -39,6 +39,7 @@ class Solution:
         :param q_location: the index of Q wave in np.array()
         :param s_location: the index of S wave in np.array()
         """
+        
         # Calculate the number of sample by multiplying seconds by frequency
         num_samples = int(plot_duration * self.fs)
 
@@ -70,10 +71,10 @@ class Solution:
         
         plt.xlabel('Time (s)')
         plt.ylabel('Amplitude')
-        plt.title(f'ECG Signal with Selected QRS Complex ({plot_duration} s)')
+        plt.title(f'ECG Signal with Selected QRS Complex ({plot_duration} s)_{self.fs}')
         plt.legend()
         plt.grid(True)
-        plt.savefig(self.location / f'graph_specific_time_{plot_duration}_s.png') if to_image else plt.show()
+        plt.savefig(self.location / f'graph_specific_time_{plot_duration}_s_{custom_name}.png') if to_image else plt.show()
 
     @staticmethod
     def detect_qrs_complex_using_pan_tompkins(ecg: np.array, fs_val: int) -> np.array:
@@ -113,11 +114,12 @@ if __name__ == '__main__':
     raw_file_2 = np.loadtxt('https://raw.githubusercontent.com/rustamPy/notes/main/person_2.dat')
     
     person_1 = Solution(raw_file_1, location)
-    person_1 .build_graph_all_time()
-    person_1 .build_graph_in_specific_time_range(2, 230, 280)
+    person_1 .build_graph_all_time('person_1', True)
+    person_1 .build_graph_in_specific_time_range(2, 230, 280,'person_1', True)
     person_1 .calculate_heart_rate()
     
     person_2 = Solution(raw_file_2, location, custom_frequency=1000)
-    person_2 .build_graph_all_time()
-    person_2 .build_graph_in_specific_time_range(2, 850, 1100)
+    person_2 .build_graph_all_time('person_2', True)
+    person_2 .build_graph_in_specific_time_range(2, 850, 1100, 'person_2', True)
     person_2 .calculate_heart_rate()
+
