@@ -111,10 +111,8 @@ class Solution:
 
 if __name__ == '__main__':
     location = Path(r'C:\Users\kerim\Desktop\DSP\ecg_data')
-    dat_file_name = 'rec_1.dat'
-    raw_file = np.loadtxt(location / dat_file_name)
+    raw_file = np.loadtxt('https://raw.githubusercontent.com/rustamPy/notes/main/rec_1.dat')
     obj = Solution(raw_file, location)
 
-    obj.build_graph_all_time()
     obj.build_graph_in_specific_time_range(2, 230, 280)
     obj.calculate_heart_rate()
