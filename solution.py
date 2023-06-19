@@ -7,9 +7,9 @@ from typing import Any
 
 class Solution:
 
-    def __init__(self, ecg_array: np.array, location: Path):
+    def __init__(self, ecg_array: np.array, location: Path, custom_frequency=None):
         self.ecg_values = ecg_array[:, 1]
-        self.fs = ecg_array[-1][0]
+        self.fs = ecg_array[-1][0] if custom_frequency is None else custom_frequency
         self.location = location
 
     # task 1 - detect QRS Complexes
@@ -18,7 +18,6 @@ class Solution:
 
         """
         time_plot = np.arange(len(self.ecg_values)) / self.fs
-
         # Plotting - visualization
         plt.figure(figsize=(11, 4))
         plt.plot(time_plot, self.ecg_values, label='ECG signal - All')
@@ -66,7 +65,7 @@ class Solution:
         plt.plot(time_plot, ecg_plot, label='ECG signal')
 
         # Highlight QRS complex
-        plt.plot(time_plot[q_location:s_location + 1], self.ecg_values[q_location:s_location + 1], color='red',
+        plt.plot(time_plot[q_location:s_location], self.ecg_values[q_location:s_location], color='red',
                  label='Selected QRS complex')
         
         plt.xlabel('Time (s)')
@@ -97,10 +96,8 @@ class Solution:
 
         # Calculate RR Intervals - distance between two adjacent peaks (np.diff) and divide by frequency
         rr_intervals = np.diff(qrs_peaks) / self.fs
-
         # Find the average of RR intervals (np.mean)
         average_rr_interval = np.mean(rr_intervals)
-
         # Divide by 60 (per minute convention)
         hr = 60 / average_rr_interval
 
@@ -111,8 +108,16 @@ class Solution:
 
 if __name__ == '__main__':
     location = Path(r'C:\Users\kerim\Desktop\DSP\ecg_data')
-    raw_file = np.loadtxt('https://raw.githubusercontent.com/rustamPy/notes/main/rec_1.dat')
-    obj = Solution(raw_file, location)
-
-    obj.build_graph_in_specific_time_range(2, 230, 280)
-    obj.calculate_heart_rate()
+    
+    raw_file_1 = np.loadtxt('https://raw.githubusercontent.com/rustamPy/notes/main/person_1.dat')
+    raw_file_2 = np.loadtxt('https://raw.githubusercontent.com/rustamPy/notes/main/person_2.dat')
+    
+    person_1 = Solution(raw_file_1, location)
+    person_1 .build_graph_all_time()
+    person_1 .build_graph_in_specific_time_range(2, 230, 280)
+    person_1 .calculate_heart_rate()
+    
+    person_2 = Solution(raw_file_2, location, custom_frequency=1000)
+    person_2 .build_graph_all_time()
+    person_2 .build_graph_in_specific_time_range(2, 850, 1100)
+    person_2 .calculate_heart_rate()
