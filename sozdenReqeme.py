@@ -22,7 +22,7 @@ class Solution:
                   }
 
         ls = []
-        for i in s.split(' '):
+        for i in s.split():
             if i in sozler:
                 ls.append(sozler[i])
             elif i == "yüz":
